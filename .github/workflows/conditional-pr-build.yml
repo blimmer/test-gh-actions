@@ -11,3 +11,7 @@ jobs:
       - name: Print GitHub event action
         run: |
           echo "${{ github.event.action }}"
+      - name: do it on open
+        if: github.event.action == 'opened'
+        run: |
+          echo "I did it!"
