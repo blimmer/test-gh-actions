@@ -15,3 +15,5 @@ jobs:
         if: github.event.action == 'opened'
         run: |
           echo "I did it!"
+      - name: no-op
+        run: hi
