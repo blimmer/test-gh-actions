@@ -4,10 +4,5 @@ on: push
 jobs:
   test:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: test-path
     steps:
-      - name: test
-        working-directory: ""
-        run: echo "hi"
+      - run: lsb_release -rs
