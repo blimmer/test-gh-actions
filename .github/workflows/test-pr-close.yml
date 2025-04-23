@@ -3,12 +3,11 @@ name: Test PR Close
 on:
   pull_request:
     types: [closed]
-    branches:
-      - "qa-*"
 
 jobs:
   post-comment:
     runs-on: ubuntu-latest
+    if: startsWith(github.event.pull_request.head.ref, 'qa-')
     steps:
       - name: Post warning comment
         uses: edumserrano/find-create-or-update-comment@v3
