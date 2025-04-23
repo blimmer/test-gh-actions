@@ -1,0 +1,19 @@
+name: Conditional PR Build
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  print_info:
+    name: Print info
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print GitHub event action
+        run: |
+          echo "${{ github.event.action }}"
+      - name: do it on open
+        if: github.event.action == 'opened'
+        run: |
+          echo "I did it!"
+      - name: no-op
+        run: hi
