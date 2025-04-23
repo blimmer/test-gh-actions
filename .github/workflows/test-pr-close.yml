@@ -1,0 +1,22 @@
+name: Test PR Close
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - "qa-*"
+
+jobs:
+  post-comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post warning comment
+        uses: edumserrano/find-create-or-update-comment@v3
+        with:
+          edit-mode: replace
+          issue-number: ${{ github.event.pull_request.number }}
+          body-includes: <!-- test-pr-close -->
+          comment-author: "github-actions[bot]"
+          body: |
+            <!-- test-pr-close -->
+            Test test
